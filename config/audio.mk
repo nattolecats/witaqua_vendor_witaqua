@@ -1,4 +1,4 @@
-LOCAL_PATH := vendor/2by2/audio
+LOCAL_PATH := vendor/witaqua/audio
 
 # Alarms
 PRODUCT_COPY_FILES += \
@@ -19,7 +19,7 @@ PRODUCT_COPY_FILES += \
 # 2019 Material product sounds (CC-BY 4.0)
 # Source: https://material.io/design/sound/sound-resources.html
 PRODUCT_COPY_FILES += \
-    $(call find-copy-subdir-files,*,vendor/2by2/audio/material/,$(TARGET_COPY_OUT_PRODUCT)/media/audio)
+    $(call find-copy-subdir-files,*,vendor/witaqua/audio/material/,$(TARGET_COPY_OUT_PRODUCT)/media/audio)
 
 # Default Sounds
 PRODUCT_PRODUCT_PROPERTIES += \

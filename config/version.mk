@@ -1,4 +1,4 @@
-# Copyright (C) 2024 The 2by2 Project
+# Copyright (C) 2024 WitAqua
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -12,34 +12,28 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-PRODUCT_VERSION_MAJOR := 2
-PRODUCT_VERSION_MINOR := 5
-CUSTOM_BUILD_VERSION_CODENAME := Bismuth
-CUSTOM_MAINTAINER ?= Unknown
+PRODUCT_VERSION_MAJOR := 3
+PRODUCT_VERSION_MINOR := 2
 
 # Versioning System
-CUSTOM_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)
+WITAQUA_BUILD_TYPE ?= UNOFFICIAL
+WITAQUA_BUILD_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)
 
-# Add suffix when building VANILLA edition
-ifeq ($(WITH_GMS),false)
-  VANILLA_SUFFIX := -VANILLA
-endif
-
-# Maintainer props
+# Build version props
 PRODUCT_PRODUCT_PROPERTIES += \
-    ro.2by2.build.version.codename=$(CUSTOM_BUILD_VERSION_CODENAME) \
-    ro.2by2.build.version=$(CUSTOM_BUILD_VERSION)
+    ro.witaqua.build.version=$(WITAQUA_BUILD_VERSION) \
+    ro.witaqua.build.type=$(WITAQUA_BUILD_TYPE)
 
 # Device info
-CUSTOM_PROCESSOR_INFO ?= Unknown
+WITAQUA_PROCESSOR_INFO ?= Unknown
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
-    persist.sys.2by2_processor_info=$(subst $() ,_,$(CUSTOM_PROCESSOR_INFO)) \
-    persist.sys.device_camera_info_rear=$(CUSTOM_CAMERA_REAR_INFO) \
-    persist.sys.device_camera_info_front=$(CUSTOM_CAMERA_FRONT_INFO)
+    persist.sys.witaqua_processor_info=$(subst $() ,_,$(WITAQUA_PROCESSOR_INFO)) \
+    persist.sys.device_camera_info_rear=$(WITAQUA_CAMERA_REAR_INFO) \
+    persist.sys.device_camera_info_front=$(WITAQUA_CAMERA_FRONT_INFO)
 
 # Internal version
-LINEAGE_VERSION := 2by2-Project-$(PLATFORM_VERSION)-$(shell date -u +%Y%m%d_%H%M%S)-$(LINEAGE_BUILD)$(VANILLA_SUFFIX)
+LINEAGE_VERSION := WitAqua-$(PLATFORM_VERSION).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILD)-v$(WITAQUA_BUILD_VERSION)-$(WITAQUA_BUILD_TYPE)
 
 # Display version
 LINEAGE_DISPLAY_VERSION := $(LINEAGE_VERSION)
